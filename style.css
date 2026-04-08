@@ -113,7 +113,7 @@ footer { margin-top: auto; padding-top: 20px; }
 .popup-body p { font-size: 1.3rem; font-weight: 800; margin: 15px 0; color: #f8fafc; }
 .popup-body span { color: var(--gold); }
 
-#pop-prize-amount { font-size: 0.7rem; }
+#pop-prize-amount { font-size: 0.8rem; }
 
 .start-btn { 
     background: var(--neon-blue); color: #000; font-size: 1.1rem; border: none;
