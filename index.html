@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FLASH! Mobile Hub</title>
+    <title>Main Board</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,17 +17,17 @@
 
         <div id="game-list">
             <div class="game-box status-open" onclick="openPopup('Memory \nFlash', '정말정말긴단어가들어간<br>다면감당가능할지궁금함')">
-                <span class="game-title">GAME 1</span>
+                <span class="game-title">GAME 1: NINTENDO </span>
                 <span class="status-badge">OPEN</span>
             </div>
 
-            <div class="game-box status-done">
-                <span class="game-title">GAME 2</span>
+            <div class="game-box status-close">
+                <span class="game-title">GAME 2: STACK</span>
                 <span class="status-badge">CLOSE</span>
             </div>
 
             <div class="game-box status-close">
-                <span class="game-title">GAME 3</span>
+                <span class="game-title">GAME 3: 한글시험</span>
                 <span class="status-badge">CLOSE</span>
             </div>
 
@@ -66,7 +66,7 @@
             <div class="popup-header">CHALLENGE INFO</div>
             <div class="popup-body">
                 <p>GAME: <span id="pop-game-name">---</span></p>
-                <p>REWARD: <span id="pop-prize-amount">0</span> ₩</p>
+                <p>REWARD: <span id="pop-prize-amount">0</span></p>
             </div>
             <button class="close-btn" onclick="closePopup()">BACK</button>
         </div>
