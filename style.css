@@ -4,99 +4,120 @@
     --neon-green: #4ade80;
     --neon-red: #ef4444;
     --gold: #fbbf24;
-    --glass: rgba(15, 23, 42, 0.8);
+    --glass: rgba(15, 23, 42, 0.7);
 }
 
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+* { 
+    box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent; 
+}
 
 body, html {
     margin: 0; padding: 0;
     width: 100%; height: 100%;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     background-color: var(--bg-dark);
-    /* Your background image instructions */
+    /* Background Image placeholder */
     background-image: url('image1.jpg');
     background-size: cover;
     background-position: center;
     color: white;
-    display: flex; justify-content: center; overflow: hidden;
+    display: flex; justify-content: center;
+    overflow: hidden;
 }
 
-/* Darkens the image slightly so text pops */
 .bg-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.4); z-index: 1;
+    background: linear-gradient(to bottom, rgba(7, 11, 20, 0.5), rgba(7, 11, 20, 0.8));
+    z-index: 1;
 }
 
 #app-container {
     position: relative; z-index: 2;
-    width: 100%; max-width: 430px; /* iPhone 16 approximate width */
+    width: 100%;
+    max-width: 430px; /* iPhone 16 Width */
     height: 100%;
-    padding: 60px 25px;
+    padding: 60px 25px 40px 25px;
     display: flex; flex-direction: column;
 }
 
-header { margin-bottom: 40px; text-align: center; }
+header { margin-bottom: 30px; text-align: center; }
 header h1 { font-size: 2.5rem; font-weight: 900; letter-spacing: -1px; margin: 0; }
 header h1 span { color: var(--neon-blue); }
-header p { font-size: 0.8rem; color: #94a3b8; letter-spacing: 2px; margin-top: 5px; }
+header p { font-size: 0.75rem; color: #94a3b8; letter-spacing: 2px; margin-top: 5px; font-weight: bold; }
 
 #game-list {
-    display: flex; flex-direction: column; gap: 15px;
+    display: flex; flex-direction: column; gap: 12px;
+    overflow-y: auto;
+    padding-bottom: 20px;
 }
 
 /* Base Game Box */
 .game-box {
-    height: 80px;
+    min-height: 85px;
     background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
     display: flex; justify-content: space-between; align-items: center;
-    padding: 0 20px;
-    transition: all 0.2s ease;
+    padding: 0 25px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.game-title { font-size: 1.1rem; font-weight: 700; }
-.status-badge { font-size: 0.7rem; font-weight: 900; padding: 4px 8px; border-radius: 5px; }
+.game-title { font-size: 1.1rem; font-weight: 800; letter-spacing: 0.5px; }
+.status-badge { font-size: 0.65rem; font-weight: 900; padding: 5px 10px; border-radius: 6px; text-transform: uppercase; }
 
-/* Status Logic */
-.status-open { border-left: 5px solid var(--neon-blue); cursor: pointer; }
-.status-open:active { transform: scale(0.97); background: rgba(56, 189, 248, 0.1); }
+/* State: OPEN */
+.status-open { border-left: 6px solid var(--neon-blue); cursor: pointer; }
+.status-open:active { transform: scale(0.96); background: rgba(56, 189, 248, 0.15); }
 .status-open .status-badge { background: var(--neon-blue); color: #000; }
 
-.status-done { border-left: 5px solid var(--neon-green); opacity: 0.9; }
+/* State: DONE */
+.status-done { border-left: 6px solid var(--neon-green); pointer-events: none; }
 .status-done .game-title { color: var(--neon-green); font-family: monospace; }
 .status-done .status-badge { background: var(--neon-green); color: #000; }
 
-.status-close { border-left: 5px solid #475569; opacity: 0.5; pointer-events: none; }
+/* State: CLOSE */
+.status-close { border-left: 6px solid #475569; opacity: 0.4; pointer-events: none; }
 .status-close .status-badge { background: #475569; color: #fff; }
 
-/* Popup Styles */
+/* Footer / Total */
+footer { margin-top: auto; padding-top: 20px; }
+.total-box {
+    background: rgba(251, 191, 36, 0.1);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.total-label { font-size: 0.75rem; font-weight: 900; color: var(--gold); letter-spacing: 4px; margin-bottom: 5px; display: block; }
+.total-value { font-size: 2.4rem; font-weight: 900; color: white; }
+
+/* Popup */
 #popup-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8); z-index: 100;
+    background: rgba(0,0,0,0.85); z-index: 100;
     display: none; justify-content: center; align-items: center;
-    padding: 20px;
-}
-
-#popup-content {
-    background: #0f172a;
-    width: 100%; max-width: 320px;
-    border: 2px solid var(--neon-blue);
-    border-radius: 20px;
     padding: 30px;
-    text-align: center;
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
 }
-
-.popup-header { font-weight: 900; color: var(--neon-blue); letter-spacing: 2px; margin-bottom: 20px; }
-.popup-body p { font-size: 1.2rem; font-weight: 700; margin: 10px 0; }
+#popup-content {
+    background: #0f172a; width: 100%;
+    border: 2px solid var(--neon-blue);
+    border-radius: 25px; padding: 35px; text-align: center;
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.4);
+}
+.popup-header { font-weight: 900; color: var(--neon-blue); letter-spacing: 3px; margin-bottom: 25px; }
+.popup-body p { font-size: 1.3rem; font-weight: 800; margin: 15px 0; color: #f8fafc; }
 .popup-body span { color: var(--gold); }
 
-button {
-    width: 100%; padding: 15px; border-radius: 10px; border: none;
-    font-weight: 800; margin-top: 10px; cursor: pointer;
+.start-btn { 
+    background: var(--neon-blue); color: #000; font-size: 1.1rem; border: none;
+    width: 100%; padding: 18px; border-radius: 12px; font-weight: 900; margin-top: 20px; 
 }
-.start-btn { background: var(--neon-blue); color: #000; }
-.close-btn { background: transparent; color: #94a3b8; }
+.close-btn { 
+    background: transparent; color: #64748b; font-size: 0.9rem; border: none;
+    width: 100%; padding: 10px; margin-top: 10px; font-weight: bold; 
+}
