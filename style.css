@@ -1,0 +1,102 @@
+:root {
+    --bg-dark: #070b14;
+    --neon-blue: #38bdf8;
+    --neon-green: #4ade80;
+    --neon-red: #ef4444;
+    --gold: #fbbf24;
+    --glass: rgba(15, 23, 42, 0.8);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body, html {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-dark);
+    /* Your background image instructions */
+    background-image: url('image1.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex; justify-content: center; overflow: hidden;
+}
+
+/* Darkens the image slightly so text pops */
+.bg-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4); z-index: 1;
+}
+
+#app-container {
+    position: relative; z-index: 2;
+    width: 100%; max-width: 430px; /* iPhone 16 approximate width */
+    height: 100%;
+    padding: 60px 25px;
+    display: flex; flex-direction: column;
+}
+
+header { margin-bottom: 40px; text-align: center; }
+header h1 { font-size: 2.5rem; font-weight: 900; letter-spacing: -1px; margin: 0; }
+header h1 span { color: var(--neon-blue); }
+header p { font-size: 0.8rem; color: #94a3b8; letter-spacing: 2px; margin-top: 5px; }
+
+#game-list {
+    display: flex; flex-direction: column; gap: 15px;
+}
+
+/* Base Game Box */
+.game-box {
+    height: 80px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 20px;
+    transition: all 0.2s ease;
+}
+
+.game-title { font-size: 1.1rem; font-weight: 700; }
+.status-badge { font-size: 0.7rem; font-weight: 900; padding: 4px 8px; border-radius: 5px; }
+
+/* Status Logic */
+.status-open { border-left: 5px solid var(--neon-blue); cursor: pointer; }
+.status-open:active { transform: scale(0.97); background: rgba(56, 189, 248, 0.1); }
+.status-open .status-badge { background: var(--neon-blue); color: #000; }
+
+.status-done { border-left: 5px solid var(--neon-green); opacity: 0.9; }
+.status-done .game-title { color: var(--neon-green); font-family: monospace; }
+.status-done .status-badge { background: var(--neon-green); color: #000; }
+
+.status-close { border-left: 5px solid #475569; opacity: 0.5; pointer-events: none; }
+.status-close .status-badge { background: #475569; color: #fff; }
+
+/* Popup Styles */
+#popup-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); z-index: 100;
+    display: none; justify-content: center; align-items: center;
+    padding: 20px;
+}
+
+#popup-content {
+    background: #0f172a;
+    width: 100%; max-width: 320px;
+    border: 2px solid var(--neon-blue);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+}
+
+.popup-header { font-weight: 900; color: var(--neon-blue); letter-spacing: 2px; margin-bottom: 20px; }
+.popup-body p { font-size: 1.2rem; font-weight: 700; margin: 10px 0; }
+.popup-body span { color: var(--gold); }
+
+button {
+    width: 100%; padding: 15px; border-radius: 10px; border: none;
+    font-weight: 800; margin-top: 10px; cursor: pointer;
+}
+.start-btn { background: var(--neon-blue); color: #000; }
+.close-btn { background: transparent; color: #94a3b8; }
