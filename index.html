@@ -2,79 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Main Board</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown - iPhone 12 Mini</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="bg-overlay"></div>
-    
-    <div id="app-container">
-        <header>
-            <h1><span style="color: #D1A1D6">META LAND</span></h1>
-            <p>METAMONG CHALLENGE</p>
-        </header>
 
-        <div id="game-list">
-            <div class="game-box status-done" onclick="openPopup('마리오파티', '\n1등: ⭐ 2개째부터 ₩10,000\n2등: ⭐ 2개째부터 ₩5,000 + 소음이 침대 6시간\n3등: 소라 6시간 휴가\n4등: 상어 6시간 휴가')">
-                <span class="game-title">소라 6시간</span>
-                <span class="status-badge">닌텐도 DONE</span>
-            </div>
-
-            <div class="game-box status-done" onclick="openPopup('숫자 입력', '\n₩21,000 이하: 우비 침대 6시간\n₩15,500 이하: 와둥 침대 6시간\n₩10,000 이하: 아둥 침대 6시간')">
-                <span class="game-title">₩17,500 + 우비 6시간 </span>
-                <span class="status-badge">동체시력 DONE</span>
-            </div>
-            <!--onclick="openPopup('숫자 입력', '\n₩21,000 이하: 우비 침대 6시간\n₩15,500 이하: 와둥 침대 6시간\n₩10,000 이하: 아둥 침대 6시간')"-->
-
-            <div class="game-box status-done" onclick="openPopup('블록 쌓기', '\n10층: 5/5 홍련\n9층: ₩15,000\n8층: ₩5.000\n7층: 소음 6시간 침대\n6층: 소라 6시간 휴가\n5층: 상어 6시간 휴가\n4층: 소라 24시간 휴가\n0-3층: 상어 24시간 휴가')">
-                <span class="game-title">₩15,000</span>
-                <span class="status-badge">타이밍 DONE</span>
-            </div>
-
-            <div class="game-box status-done" onclick="openPopup('빙고', '\n메타몽이 3 빙고 완성하기 전에\n5+ 빙고: ₩50,000\n4빙고: ₩25,000\n3빙고: ₩10,000\n2빙고: 소라 휴가 8시간\n1빙고: 상어 휴가 8시간\n0빙고: 소라,상어 휴가 8시간')">
-                <span class="game-title">₩10,000</span>
-                <span class="status-badge">운 DONE</span>
-            </div>
-
-            <div class="game-box status-done" onclick="openPopup('이모지 암기', '\n기본상금 + \n10-15 라운드 소음 침대 6시간\n5-10라운드 소라상어 휴가 6시간씩\n0-5라운드: 아동 침대 24시간')">
-                <span class="game-title">₩3,150 + 소라,상어 6시간</span>
-                <span class="status-badge">암기 DONE</span>
-            </div>
-            
-            <div class="game-box status-done" onclick="openPopup('밸런스 게임', '\n???')">
-                <span class="game-title">-</span>
-                <span class="status-badge">결정 DONE</span>
-            </div>
-            
-            <div class="game-box status-open" onclick="openPopup('버튼 300번', '\n120초이내: ₩100,000\n150초이내: ₩50,000\n160초이내:₩40,000\n165초이내: ₩30,000\n170초이내: ₩25,000 + 코코 침대 6시간\n175초이내: ₩20,000 + 소음 침대 6시간\n180초이내: ₩10,000 + 우비 침대 6시간\n185초이내: ₩5,000 + 아둥 침대 6시간\n190초 이상: 10초당 소라, 상어, 아둥 랜덤 1시간 휴가/침대')">
-                <span class="game-title">GAME 7: 속도</span>
-                <span class="status-badge">OPEN</span>
-            </div>
-
-            <div class="game-box status-close">
-                <span class="game-title">GAME FINAL: ???</span>
-                <span class="status-badge">CLOSE</span>
-            </div>
-            
-        </div>
-
-        <footer>
-            <div class="total-box">
-                <span class="total-label">TOTAL RESULT</span>
-                <span class="total-value">₩45,650<br>우비 침대 6시간<br>소라 휴가 12시간<br>상어 휴가 6시간</span>
-            </div>
-        </footer>
-    </div>
-
-    <div id="popup-overlay" onclick="closePopup()">
-        <div id="popup-content" onclick="event.stopPropagation()">
-            <div class="popup-header">CHALLENGE INFO</div>
-            <div class="popup-body">
-                <p>GAME: <span id="pop-game-name">---</span></p>
-                <p>REWARD: <span id="pop-prize-amount">0</span></p>
-            </div>
-            <button class="close-btn" onclick="closePopup()">BACK</button>
+    <div class="iphone-12-mini">
+        <div class="title">THE BIG DAY</div>
+        <div id="clock">00:00:00:00</div>
+        <div class="labels">
+            <span>Days</span>
+            <span>Hrs</span>
+            <span>Min</span>
+            <span>Sec</span>
         </div>
     </div>
 
